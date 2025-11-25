@@ -1,0 +1,563 @@
+/* ================================================= */
+/* TEMA: HIJAU TUA & KREM (EARTHY TONES)            */
+/* FILE: style.css LENGKAP                           */
+/* ================================================= */
+
+/* Pengaturan Dasar dan Font */
+:root {
+    /* Tema: Hijau Tua dan Krem (Earthy Tones) */
+    --biru-tua: #004D40; /* Hijau Gelap/Teal (Primary) */
+    --merah-tua: #A1887F; /* Cokelat Tua Pucat (Secondary/Aksen) */
+    --gold: #FFF8E1; /* Krem Terang (Light Accent) */
+    --putih: #FFFFFF;
+    --latar-terang: #FAFAFA; /* Background Halaman */
+    --latar-alternatif: #E0F2F1; /* Hijau Mint Pucat (Latar Alternatif) */
+    --teks-biasa: #333333;
+    --emas: #FFB300; /* Emas Cerah (Aksen Poin) */
+
+    /* Tambahan Shadow */
+    --shadow-light: 0 4px 15px rgba(0, 77, 64, 0.1);
+}
+
+html {}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--latar-terang);
+    color: var(--teks-biasa);
+    line-height: 1.6;
+
+    /* MEMASTIKAN FOOTER SELALU DI BAWAH */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ------------------------------------------- */
+/* HEADER DAN NAVIGASI */
+/* ------------------------------------------- */
+header {
+    background-color: var(--biru-tua); /* Hijau Gelap */
+    color: var(--gold); /* Krem Terang */
+    padding: 1rem 0;
+    border-bottom: 5px solid var(--merah-tua); /* Cokelat Aksen */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+nav {
+    display: flex; /* Kunci: Navigasi Horizontal */
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+nav .logo h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--gold);
+}
+
+nav .logo p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--gold);
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 1.5rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.5rem;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+    color: var(--emas); /* Emas Cerah untuk Hover */
+    border-bottom: 2px solid var(--emas);
+}
+
+/* ------------------------------------------- */
+/* KODE KUNCI UNTUK TRANSISI HALAMAN FADE */
+/* ------------------------------------------- */
+.page-container {
+    position: relative;
+    overflow: hidden; 
+    flex: 1;
+    width: 100%;
+}
+
+.page-section {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: opacity 0.4s ease-in-out; 
+    min-height: calc(100vh - 120px); 
+    padding-top: 2rem; 
+    padding-bottom: 2rem;
+    box-sizing: border-box; 
+}
+
+.page-section.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative; 
+}
+
+#beranda.hero-section.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ------------------------------------------- */
+/* HERO SECTION (BERANDA) */
+/* ------------------------------------------- */
+#beranda.hero-section {
+    /* Overlay Hijau Gelap Transparan */
+    background: var(--putih);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--putih);
+    text-align: center;
+    min-height: 100vh;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem; 
+    margin-bottom: 1rem; 
+}
+
+#beranda.hero-section h1 {
+    font-size: 3.5rem;
+    margin: 0;
+    color: var(--gold); /* Krem Terang */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.hero-logo {
+    width: 90px; 
+    height: 90px; 
+    object-fit: contain; 
+    background-color: transparent; 
+    border-radius: 50%; /* BULAT */
+    padding: 5px;
+    border: 3px solid var(--merah-tua); /* Cokelat Aksen */
+}
+#beranda.hero-section h3 {
+    font-size: 1.8rem;
+    color: var(--teks-biasa); /* Menggunakan variabel teks standar (Hitam/Abu-abu gelap) */
+    margin-top: 0.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+.hero-theme p {
+    /* Paragraf: Slogan Ekspedisi */
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--teks-biasa); /* Menggunakan variabel teks standar (Hitam/Abu-abu gelap) */
+    margin: 0;
+    margin-top: 0.5rem; /* Memberi sedikit jarak dari h3 di atasnya */
+}
+/* ------------------------------------------- */
+/* KONTEN UTAMA DAN HEADINGS */
+/* ------------------------------------------- */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.content-section {
+    padding: 3rem 2rem;
+}
+
+.alternate-bg {
+    background-color: var(--latar-alternatif); /* Hijau Mint Pucat */
+}
+
+.content-section h2 {
+    font-size: 2.5rem;
+    color: var(--merah-tua); /* Cokelat Aksen */
+    border-bottom: 3px solid var(--emas); /* Emas Cerah */
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+
+/* ------------------------------------------- */
+/* KEGIATAN (TIMELINE HORIZONTAL) - KODE PERBAIKAN JARAK */
+/* ------------------------------------------- */
+.timeline {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 6rem 0 2rem 0; 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto; 
+    gap: 0; 
+    border: none; 
+}
+
+/* Scrollbar Cantik (Tetap) */
+.timeline::-webkit-scrollbar { height: 10px; }
+.timeline::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 5px; }
+.timeline::-webkit-scrollbar-thumb { background: var(--merah-tua); border-radius: 5px; } 
+
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 0 1.5rem; 
+    min-width: 320px;
+    flex-shrink: 0;
+    z-index: 1;
+    box-sizing: border-box; 
+}
+
+/* GARIS PENYAMBUNG HORIZONTAL */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    top: 3rem; 
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--merah-tua); 
+    z-index: -1;
+}
+
+/* LOGIKA GARIS UNTUK ITEM PERTAMA DAN TERAKHIR */
+.timeline-item:first-child::after { left: 50%; width: 50%; }
+.timeline-item:last-child::after { width: 50%; left: 0; }
+
+/* Titik/Dot Emas */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 2.5rem; 
+    left: 50%; 
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: var(--emas); 
+    border: 3px solid var(--biru-tua); 
+    border-radius: 50%;
+    z-index: 2;
+}
+
+/* TANGGAL DAN DESKRIPSI (DIPERBAIKI POSISI ATASNYA) */
+.timeline-date {
+    position: absolute; 
+    top: 5rem; /* Disesuaikan lebih rendah dari 4.5rem */
+    left: 50%; 
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%; 
+    padding: 0 1rem;
+}
+
+.timeline-date span { 
+    font-size: 1.1rem; 
+    font-weight: bold; 
+    color: var(--biru-tua); 
+    display: block; 
+    white-space: nowrap;
+}
+
+.timeline-date p { 
+    font-size: 0.9rem; 
+    color: var(--merah-tua); 
+    margin-top: 0.2rem;
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+/* KONTEN KEGIATAN (DITAMBAH JARAKNYA) */
+.timeline-content {
+    background-color: var(--putih);
+    border: 1px solid #ddd;
+    border-top: 5px solid var(--emas);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-top: 9rem; /* NILAI KUNCI DITAMBAH AGAR ADA JEDA DARI TANGGAL */
+}
+
+.timeline-content h3 { color: var(--biru-tua); }
+/* ------------------------------------------- */
+/* PROFIL (KARTU) DAN MODAL */
+/* ------------------------------------------- */
+.profil-subtitle { text-align: center; }
+
+.profil-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.profil-card {
+    border-top: 5px solid var(--merah-tua); /* Cokelat Aksen */
+    position: relative; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.profil-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.profil-card img {
+    border-radius: 50%; /* BULAT */
+    border: 3px solid var(--biru-tua); /* Hijau Gelap */
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.profil-card h3 { color: var(--biru-tua); }
+
+/* Label Pembina */
+.pembina-label-simple {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--biru-tua); /* Hijau Gelap */
+    color: var(--gold); /* Krem Terang */
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+/* --- Tambahkan Blok CSS Ini ke file style.css Anda --- */
+
+.profil-card .profil-detail-hint {
+    /* Style untuk teks petunjuk klik */
+    font-size: 0.85rem; /* Ukuran teks yang lebih kecil */
+    color: var(--merah-tua); /* Menggunakan warna aksen (Cokelat Pucat) */
+    margin-top: 0.2rem;
+    font-style: italic; /* Sedikit miring agar terlihat seperti petunjuk */
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.profil-card:hover .profil-detail-hint {
+    /* Sedikit pencerahan saat kursor di atas kartu */
+    color: var(--biru-tua); 
+}
+
+/* MODAL (POP-UP) */
+.modal-overlay {
+    position: fixed; 
+    background-color: rgba(0, 77, 64, 0.85); /* Overlay Hijau Gelap Transparan */
+    z-index: 2000;
+    display: none; 
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    justify-content: center;
+    align-items: center;
+    top: 0; left: 0; width: 100%; height: 100%;
+    padding: 1rem;
+}
+
+.modal-content {
+    background-color: var(--putih);
+    border-top: 5px solid var(--emas); /* Emas Cerah */
+    border-bottom: 5px solid var(--biru-tua); /* Hijau Gelap */
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+/* PERBAIKAN POSISI TOMBOL TUTUP */
+.modal-close {
+    position: absolute;
+    top: 10px; 
+    right: 15px; 
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #aaa;
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10; /* Pastikan selalu di atas */
+}
+
+.modal-close:hover { color: var(--merah-tua); } /* Cokelat Aksen */
+
+#modalFoto {
+    border-radius: 50%; 
+    border: 4px solid var(--biru-tua); 
+    width: 180px; height: 180px; object-fit: cover;
+    margin-bottom: 1rem; /* Tambahkan margin agar tidak terlalu dekat dengan nama */
+}
+
+#modalNama { color: var(--merah-tua); } 
+#modalPeran { color: var(--biru-tua); } 
+#modalSekolah { color: #555; margin-bottom: 1rem; } /* Tambahan style agar terlihat seperti subtitle */
+
+/* PERBAIKAN TAMPILAN INFORMASI KONTAK (RATA KIRI) */
+.modal-kontak {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    text-align: left; /* RATA KIRI */
+}
+
+.modal-kontak p {
+    font-size: 0.95rem;
+    color: #333;
+    margin: 0.5rem 0;
+    font-weight: 500;
+    text-align: left; /* KUNCI RATA KIRI */
+}
+
+/* ------------------------------------------- */
+/* EKSPLORASI / SEJARAH */
+/* ------------------------------------------- */
+.eksplorasi-item {
+    background-color: var(--latar-alternatif); /* Hijau Mint Pucat */
+    border-left: 5px solid var(--merah-tua); /* Cokelat Aksen */
+    display: flex;
+    align-items: center; 
+    gap: 1.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.eksplorasi-item h3 { color: var(--biru-tua); } /* Hijau Gelap */
+
+/* Dokumentasi Grid */
+.dok-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.dok-content img {
+    max-width: 100%;
+    height: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+/* ------------------------------------------- */
+/* DOKUMENTASI (VIDEO RESPONSIVE)              */
+/* ------------------------------------------- */
+.dok-video-container {
+    /* Container utama untuk menjaga rasio aspek 16:9 */
+    position: relative;
+    padding-bottom: 56.25%; /* (9 / 16 * 100%) - Menjaga rasio 16:9 */
+    height: 0;
+    overflow: hidden;
+    
+    /* KODE KUNCI: Batasi lebar maksimum dan rata tengah */
+    max-width: 800px; /* Batas lebar video (Anda bisa ubah ini) */
+    margin: 2rem auto; /* Rata tengah dan beri jarak */
+    
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dok-video-container iframe,
+.dok-video-container video { /* Tambahkan tag video jika menggunakan HTML5 */
+    /* Memastikan iframe/video mengisi seluruh container responsif */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* ------------------------------------------- */
+/* FOOTER */
+/* ------------------------------------------- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--biru-tua); /* Hijau Gelap */
+    color: var(--gold); /* Krem Terang */
+    margin-top: auto; 
+    border-top: 5px solid var(--merah-tua); /* Cokelat Aksen */
+    font-size: 0.9rem;
+    z-index: 1001; 
+    position: relative;
+}
+
+/* ------------------------------------------- */
+/* MEDIA QUERY (Tampilan HP) */
+/* ------------------------------------------- */
+@media (max-width: 768px) {
+    /* Header/Hero Adjustments */
+    .hero-title-container { gap: 1rem; }
+    #beranda.hero-section h1 { font-size: 2.5rem; order: 2; }
+    .hero-logo:nth-of-type(1) { order: 1; }
+    .hero-logo:nth-of-type(2) { order: 3; }
+    .hero-logo { width: 60px; height: 60px; }
+
+    /* Timeline Adjustments */
+    .timeline { padding: 1rem 0; border-left: 3px solid var(--merah-tua); } 
+    .timeline-item { flex-direction: column; padding-left: 1.5rem; }
+    .timeline-item::before { left: -10px; top: -2px; width: 16px; height: 16px; }
+    .timeline-date { text-align: left; padding-right: 0; margin-bottom: 0.5rem; }
+    
+    /* Content Adjustments */
+    .eksplorasi-item { flex-direction: column; align-items: center; }
+    .eksplorasi-item img { width: 100%; max-width: 100%; }
+    .profil-grid { grid-template-columns: 1fr; }
+}
